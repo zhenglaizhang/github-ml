@@ -18,6 +18,7 @@ object Simulate {
         Thread.sleep(sec)
 
         def andThen(exec: Execute.type) = behavior()
+
       }
     }
   }

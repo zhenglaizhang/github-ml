@@ -62,7 +62,7 @@ object Implicit {
 
   implicit val a = "test"
   val s = implicitly[String]
-  val x = implicitly[Float]
+//  val x = implicitly[Float]
 
   object holder2 {
 
