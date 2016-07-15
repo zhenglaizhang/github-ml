@@ -1,5 +1,6 @@
 package net.zhenglai.ml.indepth
 
+import java.security.{AccessController, PrivilegedAction}
 import java.util
 
 /**
@@ -50,11 +51,74 @@ object Implicit {
         override def toString = "Companion Foo"
       }
     }
-    // trait & object Foo should be :paste in REPL to becomme companion
+
+    // trait & object Foo should be :paste in REPL to become companion, or use the holder object
 
     def method(implicit foo: Foo) = println(foo)
 
     method
   }
+
+
+  implicit val a = "test"
+  val s = implicitly[String]
+  val x = implicitly[Float]
+
+  object holder2 {
+
+    // type class
+    trait BinaryFormat[T] {
+      def asBinary(entity: T): Array[Byte]
+    }
+
+    trait Foo {}
+
+    object Foo {
+      implicit lazy val binaryFormat = new BinaryFormat[Foo] {
+        override def asBinary(entity: Foo) = "serializedFoo".toArray.map(_.toByte)
+      }
+    }
+
+  }
+
+  object holder3 {
+
+    object Foo {
+
+      object Bar {
+        override def toString = "Bar"
+      }
+
+      implicit def b: Bar.type = Bar
+    }
+
+    implicitly[Foo.Bar.type]
+
+  }
+
+
+  // implicit view: Int => String
+  implicit def intToString(x: Int) = x.toString
+
+  def log(msg: String) = println(msg)
+
+  log(12)
+
+  implicit def stringToFoo(x: String) = new {
+    def foo(): Unit = println("foo")
+  }
+
+  "foo".foo
+  "hello".foo
+
+  object ScalaSecurityImplicits {
+    implicit def functionToPrivilegedAction[A](func: Function0[A]) =
+      new PrivilegedAction[A] {
+        override def run() = func()
+      }
+  }
+  import ScalaSecurityImplicits._
+  AccessController.doPrivileged(() ⇒ println(""))
+
 
 }
