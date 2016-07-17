@@ -12,6 +12,7 @@ class FileLineTraversable(file: File) extends Traversable[String] {
     val input = new BufferedReader(new FileReader(file))
     try {
       var line = input readLine
+
       if (line != null) {
         do {
           f(line)
