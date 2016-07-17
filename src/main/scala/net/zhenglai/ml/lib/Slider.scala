@@ -76,5 +76,4 @@ object ImmutableCollections {
 
   // TraversableView
   // avoid perform work until necessary while allowing memory to be reclaimed
-  val
 }
