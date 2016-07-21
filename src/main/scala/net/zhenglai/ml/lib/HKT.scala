@@ -30,6 +30,14 @@ Say we have some standard pattern for our data-structures where we want to be ab
 Functors are a nice example, the covariant functor allows us to take a box holding things of type A, and a function of A => B and get back a box holding things of type B.
 
   */
+
+trait Function[F[_]] {
+  def map[A, B](fa: F[A])(f: A ⇒ B): F[B]
+}
+
+import java.util.{List ⇒ JL}
+
+
 class HKT {
 
 }

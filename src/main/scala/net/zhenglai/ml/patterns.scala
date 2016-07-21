@@ -5,20 +5,20 @@ package net.zhenglai.ml
   */
 class patterns {
 
-  trait Observable {
-    type Handle
-    val callback: Map[Handle]
-
-    def observe(callback: this.type ⇒ Unit): Handle = {
-      ???
-    }
-
-    def unobserve(handle: Handle): Unit = {
-      callback -= handle
-    }
-
-    protected def createHandle(callback: this.type ⇒ Unit): Handle
-
-  }
+//  trait Observable {
+//    type Handle
+//    val callback: Map[Handle]
+//
+//    def observe(callback: this.type ⇒ Unit): Handle = {
+//      ???
+//    }
+//
+//    def unobserve(handle: Handle): Unit = {
+//      callback -= handle
+//    }
+//
+//    protected def createHandle(callback: this.type ⇒ Unit): Handle
+//
+//  }
 
 }
