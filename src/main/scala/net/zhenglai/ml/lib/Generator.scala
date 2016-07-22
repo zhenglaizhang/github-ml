@@ -5,7 +5,16 @@ package net.zhenglai.ml.lib
   */
 object Generator {
 
+  // anonymous function
+  //  (x: Int) => x + 1
+  //
+
+  //  You can pass anonymous functions around or save them into vals.
+  val addOne = (x: Int) ⇒ x + 1
+
+  // You can leave off parens on functions with no arguments.
   // vs def
+  // If your function is made up of many expressions, you can use {} to give yourself some breathing room.
   val fibs = {
     def f(a: Int, b: Int): Stream[Int] = a #:: f(b, a + b)
     f(0, 1)
