@@ -1,4 +1,4 @@
-package net.zhenglai.ml.lib.sheets
+//package net.zhenglai.ml.lib.sheets
 // Package at the top of a file will declare everything in the file to be in that package.
 
 
@@ -83,13 +83,92 @@ object BasicCont {
 	// Values and functions cannot be outside of a class or object. Objects are a useful tool for organizing static functions.
 	object colorHolder {
 		val BLUE = "Blue"
-		
+
 		val RED = "Red"
 	}
 	// defined module colorHolder
 	// This gives you a small hint that the designers of Scala designed objects to be part of Scala’s module system.
-	
+
 	println(s"The color is: ${colorHolder.BLUE}")
                                                   //> The color is: Blue
 
+
+  // pattern matching
+  val times = 1
+
+  // matching on values
+  times match {
+    case 1 ⇒ "One"
+    case 2 ⇒ "Two"
+    case _ ⇒ "Some other number"
+  }
+
+  // matching with guard
+  times match {
+    case i if i == 1 ⇒ "One"
+    case i if i == 2 ⇒ "Two"
+    case _ ⇒ "Some other number"
+  }
+  // The _ in the last case statement is a wildcard; it ensures that we can handle any statement. Otherwise you will suffer a runtime error if you pass in a number that doesn’t match.
+
+  // Matching on type
+  def bigger(o: Any): Any = {
+    o match {
+      case i: Int if i < 0 ⇒ i - 1
+      case i: Int ⇒ i + 1
+      case d: Double if d < 0.0 ⇒ d - 0.1
+      case d: Double ⇒ d + 0.1
+      case text: String ⇒ text + "s"
+    }
+  }
+
+
+  class CalculatorFoo(brand: String, model: String) {}
+
+  def calType2(calc: CalculatorFoo) = calc match {
+    case _ if calc.brand == "HP" && calc.model == "20B" ⇒ "finiancial"
+    case _ if calc.brand == "HP" && calc.model == "48G" ⇒ "scientific"
+    case _ if calc.brand == "HP" && calc.model == "30B" ⇒ "business"
+    case _ ⇒ "unknown"
+  }
+
+
+  // Case class
+  // case classes are used to conveniently store and match on the contents of a class. You can construct them without using new.
+
+  case class Calculator(brand: String, model: String)
+  val hp20b = Calculator("HP", "20b")
+
+  // case classes automatically have equality and nice toString methods based on the constructor arguments.
+  hp20b == Calculator("HP", "20b")    // true
+  hp20b eq Calculator("HP", "20b")
+
+  //  case classes are designed to be used with pattern matching.
+  def calcType(calc: Calculator) = calc match {
+    case Calculator("HP", "20B") => "financial"
+    case Calculator("HP", "48G") => "scientific"
+    case Calculator("HP", "30B") => "business"
+    case Calculator(ourBrand, ourModel) => "Calculator: %s %s is of unknown type".format(ourBrand, ourModel)
+      // or   case Calculator(_, _) => "Calculator of unknown type"
+      // or   case _ => "Calculator of unknown type"
+      //  re-bind the matched value with another name as below
+      // or   case c@Calculator(_, _) => "Calculator: %s of unknown type".format(c)
+
+  }
+
+
+  // Exceptions
+  // Exceptions are available in Scala via a try-catch-finally syntax that uses pattern matching.
+  val result: Int = try {
+    // ...
+    0
+  } catch {
+    case e: IllegalStateException ⇒
+      println(e)
+      0
+  } finally {
+    // ...
+  }
+  // trys are also expression-oriented
+  // Finally will be called after an exception has been handled and is not part of the expression.
 }
