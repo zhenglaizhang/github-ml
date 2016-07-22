@@ -2,7 +2,6 @@
 // Package at the top of a file will declare everything in the file to be in that package.
 
 
-object BasicCont {
   println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
 
   // apply methods
@@ -125,6 +124,7 @@ object BasicCont {
 
   class CalculatorFoo(brand: String, model: String) {}
 
+  // TODO fix bug
   def calType2(calc: CalculatorFoo) = calc match {
     case _ if calc.brand == "HP" && calc.model == "20B" ⇒ "finiancial"
     case _ if calc.brand == "HP" && calc.model == "48G" ⇒ "scientific"
@@ -171,4 +171,3 @@ object BasicCont {
   }
   // trys are also expression-oriented
   // Finally will be called after an exception has been handled and is not part of the expression.
-}
