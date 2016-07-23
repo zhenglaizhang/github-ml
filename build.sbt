@@ -1,3 +1,44 @@
+/*
+Why SBT?
+  Sane(ish) dependency management
+  Ivy for dependency management
+  Only-update-on-request model
+  Full Scala language support for creating tasks
+  Continuous command execution
+  Launch REPL in project context
+
+
+[local ~/projects]$ sbt
+Project does not exist, create new project? (y/N/s) y
+
+
+project – project definition files
+  project/build/ yourproject .scala – the main project definition file
+  project/build.properties – project, sbt and scala version definitions
+
+src/main – your app code goes here, in a subdirectory indicating the
+code’s language (e.g. src/main/scala, src/main/java)
+
+src/main/resources – static files you want added to your jar
+(e.g. logging config)
+
+src/test – like src/main, but for tests
+
+lib_managed – the jar files your project depends on. Populated by sbt update
+
+target – the destination for generated stuff (e.g. generated thrift
+code, class files, jars)
+
+sbt test
+sbt> test
+
+sbt 'test-only com.twitter.sample.SampleSpec'
+
+SBT allows you to start a Scala REPL with all your project
+dependencies loaded.
+>console
+
+ */
 name := """github-ml"""
 
 version := "1.0"
