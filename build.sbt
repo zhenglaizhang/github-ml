@@ -39,6 +39,26 @@ dependencies loaded.
 >console
 
  */
+
+/*
+Quick Reference
+Common Commands
+  actions – show actions available for this project
+  update – downloads dependencies
+  compile – compiles source
+  test – runs tests
+  package – creates a publishable jar file
+  publish-local – installs the built jar in your local ivy cache
+  publish – pushes your jar to a remote repo (if configured)
+
+Moar Commands
+  test-failed – run any specs that failed
+  test-quick – run any specs that failed and/or had dependencies updated
+  clean-cache – remove all sorts of sbt cached stuff. Like clean for sbt
+  clean-lib – remove everything in lib_managed
+
+ */
+
 name := """github-ml"""
 
 version := "1.0"
