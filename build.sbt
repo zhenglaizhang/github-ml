@@ -41,21 +41,30 @@ dependencies loaded.
  */
 
 /*
+// TODO update commands to align with latest version
 Quick Reference
-Common Commands
-  actions – show actions available for this project
-  update – downloads dependencies
-  compile – compiles source
-  test – runs tests
-  package – creates a publishable jar file
-  publish-local – installs the built jar in your local ivy cache
-  publish – pushes your jar to a remote repo (if configured)
 
-Moar Commands
-  test-failed – run any specs that failed
-  test-quick – run any specs that failed and/or had dependencies updated
-  clean-cache – remove all sorts of sbt cached stuff. Like clean for sbt
-  clean-lib – remove everything in lib_managed
+  clean            Deletes files produced by the build, such as generated sources, compiled classes, and task caches.
+  compile          Compiles sources.
+  console          Starts the Scala interpreter with the project classes on the classpath.
+  consoleProject   Starts the Scala interpreter with the sbt and the build definition on the classpath and useful imports.
+  consoleQuick     Starts the Scala interpreter with the project dependencies on the classpath.
+  copyResources    Copies resources to the output directory.
+  doc              Generates API documentation.
+  package          Produces the main artifact, such as a binary jar.  This is typically an alias for the task that actually does the packaging.
+  packageBin       Produces a main artifact, such as a binary jar.
+  packageDoc       Produces a documentation artifact, such as a jar containing API documentation.
+  packageSrc       Produces a source artifact, such as a jar containing sources and resources.
+  publish          Publishes artifacts to a repository.
+  publishLocal     Publishes artifacts to the local Ivy repository.
+  publishM2        Publishes artifacts to the local Maven repository.
+  run              Runs a main class, passing along arguments provided on the command line.
+  runMain          Runs the main class selected by the first argument, passing the remaining arguments to the main method.
+  test             Executes all tests.
+  testOnly         Executes the tests provided as arguments or all tests if no arguments are provided.
+  testQuick        Executes the tests that either failed before, were not run or whose transitive dependencies changed, among those provided as arguments.
+  update           Resolves and optionally retrieves dependencies, producing a report.
+
 
  */
 
