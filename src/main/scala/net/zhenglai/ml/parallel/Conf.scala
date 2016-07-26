@@ -9,7 +9,8 @@ object Conf {
 
   val parallelismOfIO = Runtime.getRuntime.availableProcessors() * 2;
 
-  def parallelism(blockingCoefficient: Double) = Runtime.getRuntime.availableProcessors() / (1 - blockingCoefficient)
+  def parallelism(blockingCoefficient: Double) = (Runtime.getRuntime.availableProcessors() / (1 -
+    blockingCoefficient)).toInt
 
   // numOfThreads = numOfAvailableCores / (1 - blocking coefficient)
   // we can use profiling or java.lang.management api to calculate the time of a thread spends on system/IO ops vs.
